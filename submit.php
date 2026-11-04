@@ -91,15 +91,27 @@ if (mysqli_query($conn, $sql)) {
     mysqli_close($conn);
 
     echo "
+<!-- Google tag (gtag.js) -->
+<script async src='https://www.googletagmanager.com/gtag/js?id=AW-18539658786'></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'AW-18539658786');
 
-    <script>
+  var waUrl = 'https://wa.me/$whatsappNumber?text=$encodedMessage';
+  var redirected = false;
+  function go(){ if(!redirected){ redirected = true; window.location.href = waUrl; } }
 
-    window.location.href =
-    'https://wa.me/$whatsappNumber?text=$encodedMessage';
-
-    </script>
-
-    ";
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18539658786/Sx1ICLau5qsdEKL8sohF',
+    'value': 1.0,
+    'currency': 'INR',
+    'event_callback': go
+  });
+  setTimeout(go, 1500); // fallback if the callback never fires
+</script>
+";
 
     exit();
 
