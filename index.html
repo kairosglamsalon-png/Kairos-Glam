@@ -2390,6 +2390,16 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
     "Time: " + v("time") + "\n" +
     "Message: " + v("message");
   var waUrl = "https://wa.me/971521564527?text=" + encodeURIComponent(text);
+  // Save the booking to the database; keepalive lets it finish after the page moves to WhatsApp
+  fetch("/api/submit", {
+    method: "POST",
+    keepalive: true,
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      name: v("name"), phone: v("phone"), email: v("email"),
+      services: services, date: v("date"), time: v("time"), message: v("message")
+    })
+  }).catch(function(){});
   var done = false;
   function go(){ if(!done){ done = true; window.location.href = waUrl; } }
   gtag('event', 'conversion', {

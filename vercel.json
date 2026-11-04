@@ -1,0 +1,7 @@
+{
+  "regions": ["fra1"],
+  "redirects": [
+    { "source": "/admin/login.php", "destination": "/admin/login.html", "permanent": false },
+    { "source": "/admin/index.php", "destination": "/admin/", "permanent": false }
+  ]
+}
