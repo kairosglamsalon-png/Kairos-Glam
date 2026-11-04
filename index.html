@@ -2374,5 +2374,32 @@ mainCheckboxes.forEach((checkbox) => {
 });
 
 </script>
+    <script>
+document.getElementById("bookingForm").addEventListener("submit", function(e){
+  if (e.defaultPrevented) return;
+  e.preventDefault();
+  function v(id){ return document.getElementById(id).value.trim(); }
+  var services = Array.from(this.querySelectorAll('input[name="service[]"]:checked'))
+    .map(function(c){ return c.value; }).join(", ");
+  var text = "New Appointment Booking\n\n" +
+    "Name: " + v("name") + "\n" +
+    "Phone: " + v("phone") + "\n" +
+    "Email: " + v("email") + "\n" +
+    "Services: " + services + "\n" +
+    "Date: " + v("date") + "\n" +
+    "Time: " + v("time") + "\n" +
+    "Message: " + v("message");
+  var waUrl = "https://wa.me/971521564527?text=" + encodeURIComponent(text);
+  var done = false;
+  function go(){ if(!done){ done = true; window.location.href = waUrl; } }
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18539658786/Sx1ICLau5qsdEKL8sohF',
+    'value': 1.0,
+    'currency': 'INR',
+    'event_callback': go
+  });
+  setTimeout(go, 1500);
+});
+</script>
 </body>
 </html>
