@@ -2411,5 +2411,17 @@ document.getElementById("bookingForm").addEventListener("submit", function(e){
   setTimeout(go, 1500);
 });
 </script>
+    <script>
+// Google Ads: count taps on WhatsApp / phone links as a "WhatsApp click" conversion
+document.addEventListener("click", function(e){
+  var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href^="tel:"]');
+  if (!a || typeof gtag !== "function") return;
+  gtag('event', 'conversion', {
+    'send_to': 'AW-18539658786/fMaECLWBlLIdEKL8sohF',
+    'value': 1.0,
+    'currency': 'INR'
+  });
+});
+</script>
 </body>
 </html>
