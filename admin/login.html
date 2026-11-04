@@ -5,9 +5,13 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 
-<title>Salon Admin Login</title>
+<meta name="robots" content="noindex, nofollow">
+
+<meta name="theme-color" content="#faf5f3">
+
+<title>Kairos Glam | Admin Login</title>
 
 <!-- Favicons -->
   <link href="https://kairosglamdubai.com/images/favicon.png" rel="icon">
@@ -17,9 +21,26 @@
 
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <style>
+
+@font-face{
+    font-family:'Kugile';
+    src:url('/font/Kugile_Demo.ttf') format('truetype');
+    font-display:swap;
+}
+
+:root{
+    --brand:#b32025;
+    --brand-light:#e0464b;
+    --gold:#b8895a;
+    --bg:#faf5f3;
+    --card:#ffffff;
+    --line:#ecdfdc;
+    --text:#2b1b1c;
+    --muted:#8a7472;
+}
 
 *{
     margin:0;
@@ -27,113 +48,96 @@
     box-sizing:border-box;
 }
 
+html{
+    -webkit-text-size-adjust:100%;
+}
+
 body{
     font-family:'Poppins', sans-serif;
     min-height:100vh;
+    min-height:100dvh;
     display:flex;
     justify-content:center;
     align-items:center;
-    overflow:hidden;
-    position:relative;
+    padding:24px 16px;
+    padding-top:max(24px, env(safe-area-inset-top));
+    padding-bottom:max(24px, env(safe-area-inset-bottom));
+    color:var(--text);
     background:
-    linear-gradient(135deg,#0f172a 0%, #111827 40%, #1e293b 100%);
+    radial-gradient(ellipse 80% 55% at 50% -10%, rgba(179,32,37,0.12), transparent 70%),
+    radial-gradient(ellipse 60% 50% at 100% 110%, rgba(184,137,90,0.12), transparent 70%),
+    var(--bg);
+    background-attachment:fixed;
 }
 
 /* =========================
-   BACKGROUND GLOW
-========================= */
-
-body::before{
-    content:"";
-    position:absolute;
-    width:500px;
-    height:500px;
-    background:#7c3aed;
-    filter:blur(140px);
-    opacity:0.25;
-    top:-120px;
-    left:-120px;
-}
-
-body::after{
-    content:"";
-    position:absolute;
-    width:450px;
-    height:450px;
-    background:#ec4899;
-    filter:blur(140px);
-    opacity:0.20;
-    bottom:-150px;
-    right:-120px;
-}
-
-/* =========================
-   LOGIN BOX
+   CARD
 ========================= */
 
 .login-container{
-    position:relative;
-    z-index:2;
     width:100%;
-    max-width:420px;
-    padding:20px;
+    max-width:400px;
 }
 
 .login-box{
-    background:rgba(255,255,255,0.08);
-    backdrop-filter:blur(16px);
-    -webkit-backdrop-filter:blur(16px);
-    border:1px solid rgba(255,255,255,0.08);
-    border-radius:28px;
-    padding:40px 35px;
-    box-shadow:
-    0 25px 60px rgba(0,0,0,0.35),
-    inset 0 1px 0 rgba(255,255,255,0.05);
-    animation:fadeUp 0.7s ease;
+    position:relative;
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:44px 32px 32px;
+    box-shadow:0 24px 60px rgba(120,40,40,0.10), 0 2px 6px rgba(120,40,40,0.04);
+    animation:fadeUp 0.6s ease;
+}
+
+/* Thin brand accent along the top edge */
+.login-box::before{
+    content:"";
+    position:absolute;
+    top:0;
+    left:32px;
+    right:32px;
+    height:2px;
+    border-radius:0 0 2px 2px;
+    background:linear-gradient(90deg, transparent, var(--brand), transparent);
 }
 
 /* =========================
-   LOGO
+   BRAND
 ========================= */
 
 .logo{
-    width: 85px;
-    height: 85px;
-    margin: auto;
-    margin-bottom: 22px;
-    border-radius: 50%;
-    background: linear-gradient(135deg, #ed3a3a, #f75555);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    font-size: 32px;
-    font-weight: 700;
-    box-shadow: 0 12px 35px rgb(169 169 169 / 40%);
-    overflow: hidden;
-}
-.logo img {
-    width: 85px;
-    height: 85px;
-    display: block;
+    width:76px;
+    height:76px;
+    margin:0 auto 18px;
+    border-radius:50%;
+    overflow:hidden;
+    border:2px solid #fff;
+    box-shadow:0 0 0 1px var(--line), 0 8px 20px rgba(179,32,37,0.18);
 }
 
-/* =========================
-   HEADING
-========================= */
+.logo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
 
-.login-box h2{
+.login-box h1{
     text-align:center;
-    font-size:30px;
-    font-weight:700;
-    color:#fff;
-    margin-bottom:10px;
+    font-family:'Kugile', 'Poppins', serif;
+    font-weight:400;
+    font-size:32px;
+    letter-spacing:0.5px;
+    color:var(--brand);
+    margin-bottom:6px;
 }
 
 .subtitle{
     text-align:center;
-    color:#cbd5e1;
-    font-size:14px;
+    color:var(--muted);
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
     margin-bottom:30px;
 }
 
@@ -142,14 +146,18 @@ body::after{
 ========================= */
 
 .error{
-    background:rgba(239,68,68,0.12);
-    border:1px solid rgba(239,68,68,0.25);
-    color:#fecaca;
-    padding:14px;
-    border-radius:14px;
-    margin-bottom:20px;
+    background:#fdeeee;
+    border:1px solid #f3c6c7;
+    color:#9b1c20;
+    padding:12px 14px;
+    border-radius:12px;
+    margin-bottom:18px;
     text-align:center;
     font-size:14px;
+}
+
+.error[hidden]{
+    display:none;
 }
 
 /* =========================
@@ -157,39 +165,72 @@ body::after{
 ========================= */
 
 .input-group{
-    margin-bottom:20px;
+    margin-bottom:18px;
 }
 
 .input-group label{
     display:block;
     margin-bottom:8px;
-    color:#e2e8f0;
-    font-size:14px;
+    color:#4a3536;
+    font-size:13px;
     font-weight:500;
+}
+
+.input-wrap{
+    position:relative;
 }
 
 .input-group input{
     width:100%;
-    height:55px;
-    border:none;
+    height:52px;
+    border-radius:14px;
+    padding:0 16px;
+    /* 16px stops iPhones from zooming in when the field is tapped */
+    font-size:16px;
+    font-family:inherit;
+    color:var(--text);
+    background:#fcf9f8;
+    border:1px solid var(--line);
     outline:none;
-    border-radius:16px;
-    padding:0 18px;
-    font-size:14px;
-    color:#fff;
-    background:rgba(255,255,255,0.08);
-    border:1px solid rgba(255,255,255,0.08);
-    transition:0.35s ease;
+    transition:border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 
 .input-group input::placeholder{
-    color:#94a3b8;
+    color:#b3a3a1;
 }
 
 .input-group input:focus{
-    border-color:#a855f7;
-    box-shadow:0 0 0 4px rgba(168,85,247,0.18);
-    background:rgba(255,255,255,0.12);
+    border-color:var(--brand-light);
+    box-shadow:0 0 0 4px rgba(224,70,75,0.15);
+    background:#fff;
+}
+
+.input-wrap input{
+    padding-right:64px;
+}
+
+.toggle-password{
+    position:absolute;
+    top:50%;
+    right:4px;
+    transform:translateY(-50%);
+    height:44px;
+    min-width:52px;
+    padding:0 10px;
+    border:none;
+    border-radius:10px;
+    background:transparent;
+    color:var(--brand);
+    font-family:inherit;
+    font-size:13px;
+    font-weight:500;
+    cursor:pointer;
+}
+
+.toggle-password:hover,
+.toggle-password:focus-visible{
+    background:rgba(179,32,37,0.07);
+    outline:none;
 }
 
 /* =========================
@@ -197,22 +238,36 @@ body::after{
 ========================= */
 
 .login-btn{
-    width: 100%;
-    height: 56px;
-    border: none;
-    border-radius: 16px;
-    cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, #ed3a3a, #f75555);
-    transition: 0.35s ease;
-    box-shadow: 0 12px 30px rgb(247 85 85 / 35%);
+    width:100%;
+    height:54px;
+    margin-top:8px;
+    border:none;
+    border-radius:14px;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:0.3px;
+    color:#fff;
+    background:linear-gradient(135deg, var(--brand), var(--brand-light));
+    box-shadow:0 10px 24px rgba(179,32,37,0.25);
+    transition:transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
 }
 
 .login-btn:hover{
-        transform: translateY(-3px);
-    box-shadow: 0 18px 40px rgb(247 85 85 / 45%);
+    transform:translateY(-2px);
+    box-shadow:0 14px 30px rgba(179,32,37,0.32);
+}
+
+.login-btn:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:3px;
+}
+
+.login-btn:disabled{
+    opacity:0.7;
+    cursor:wait;
+    transform:none;
 }
 
 /* =========================
@@ -221,9 +276,14 @@ body::after{
 
 .footer-text{
     text-align:center;
-    margin-top:22px;
-    font-size:13px;
-    color:#94a3b8;
+    margin-top:24px;
+    font-size:12px;
+    color:var(--muted);
+}
+
+.footer-text a{
+    color:var(--brand);
+    text-decoration:none;
 }
 
 /* =========================
@@ -234,7 +294,7 @@ body::after{
 
     from{
         opacity:0;
-        transform:translateY(40px);
+        transform:translateY(24px);
     }
 
     to{
@@ -244,19 +304,51 @@ body::after{
 
 }
 
+@media (prefers-reduced-motion: reduce){
+
+    .login-box{
+        animation:none;
+    }
+
+    .login-btn{
+        transition:none;
+    }
+
+}
+
 /* =========================
-   MOBILE
+   PHONES
 ========================= */
 
 @media(max-width:480px){
 
-    .login-box{
-        padding:30px 24px;
-        border-radius:22px;
+    body{
+        align-items:flex-start;
+        padding-top:max(48px, env(safe-area-inset-top));
     }
 
-    .login-box h2{
-        font-size:24px;
+    .login-box{
+        padding:36px 20px 24px;
+        border-radius:20px;
+    }
+
+    .login-box::before{
+        left:20px;
+        right:20px;
+    }
+
+    .logo{
+        width:68px;
+        height:68px;
+    }
+
+    .login-box h1{
+        font-size:28px;
+    }
+
+    .subtitle{
+        font-size:12px;
+        margin-bottom:24px;
     }
 
 }
@@ -265,34 +357,31 @@ body::after{
 
 </head>
 
-
 <body>
 
-<div class="login-container">
+<main class="login-container">
 
     <div class="login-box">
 
-        <!-- LOGO -->
+        <!-- BRAND -->
 
         <div class="logo">
-            <img src="https://kairosglamdubai.com/images/Kairos-Logo.jpg" loading="lazy" alt="logo">
+            <img src="https://kairosglamdubai.com/images/Kairos-Logo.jpg" alt="Kairos Glam logo">
         </div>
 
-        <!-- HEADING -->
-
-        <h2>Salon Admin</h2>
+        <h1>Kairos Glam</h1>
 
         <div class="subtitle">
-            Secure dashboard login access
+            Admin Dashboard
         </div>
 
         <!-- ERROR -->
 
-        <div class="error" id="loginError" hidden></div>
+        <div class="error" id="loginError" role="alert" hidden></div>
 
         <!-- FORM -->
 
-        <form id="loginForm">
+        <form id="loginForm" novalidate>
 
             <div class="input-group">
 
@@ -302,8 +391,11 @@ body::after{
                 type="text"
                 id="username"
                 name="username"
-                placeholder="Enter Username"
+                placeholder="Enter username"
                 autocomplete="username"
+                autocapitalize="none"
+                autocorrect="off"
+                spellcheck="false"
                 required>
 
             </div>
@@ -312,13 +404,28 @@ body::after{
 
                 <label for="password">Password</label>
 
-                <input
-                type="password"
-                id="password"
-                name="password"
-                placeholder="Enter Password"
-                autocomplete="current-password"
-                required>
+                <div class="input-wrap">
+
+                    <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="Enter password"
+                    autocomplete="current-password"
+                    required>
+
+                    <button
+                    type="button"
+                    class="toggle-password"
+                    id="togglePassword"
+                    aria-label="Show password"
+                    aria-pressed="false">
+
+                        Show
+
+                    </button>
+
+                </div>
 
             </div>
 
@@ -327,7 +434,7 @@ body::after{
             class="login-btn"
             id="loginBtn">
 
-                Login to Dashboard
+                Sign In
 
             </button>
 
@@ -336,16 +443,30 @@ body::after{
         <!-- FOOTER -->
 
         <div class="footer-text">
-            © <span id="year"></span> Salon Management Panel
+            © <span id="year"></span> Kairos Glam · <a href="/">Back to website</a>
         </div>
 
     </div>
 
-</div>
+</main>
 
 <script>
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+const passwordInput = document.getElementById("password");
+const toggleBtn = document.getElementById("togglePassword");
+
+toggleBtn.addEventListener("click", function(){
+
+    const show = passwordInput.type === "password";
+
+    passwordInput.type = show ? "text" : "password";
+    toggleBtn.textContent = show ? "Hide" : "Show";
+    toggleBtn.setAttribute("aria-label", show ? "Hide password" : "Show password");
+    toggleBtn.setAttribute("aria-pressed", String(show));
+
+});
 
 document.getElementById("loginForm").addEventListener("submit", async function(e){
 
@@ -353,19 +474,25 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     const errorBox = document.getElementById("loginError");
     const button = document.getElementById("loginBtn");
+    const username = document.getElementById("username").value.trim();
+    const password = passwordInput.value;
+
+    if(!username || !password){
+        errorBox.textContent = "Please enter your username and password.";
+        errorBox.hidden = false;
+        return;
+    }
 
     errorBox.hidden = true;
     button.disabled = true;
+    button.textContent = "Signing in...";
 
     try{
 
         const res = await fetch("/api/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                username: document.getElementById("username").value,
-                password: document.getElementById("password").value
-            })
+            body: JSON.stringify({ username: username, password: password })
         });
 
         if(res.ok){
@@ -384,6 +511,7 @@ document.getElementById("loginForm").addEventListener("submit", async function(e
 
     errorBox.hidden = false;
     button.disabled = false;
+    button.textContent = "Sign In";
 
 });
 
